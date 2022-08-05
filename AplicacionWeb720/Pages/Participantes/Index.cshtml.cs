@@ -9,40 +9,35 @@ namespace AplicacionWeb720.Pages.Participantes
         public List<InfoParticipantes> listaParticipantes = new List<InfoParticipantes>();
         public void OnGet()
         {
-            try
-            {
-                String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=720server;Integrated Security=True";
+
+                String connectionString = "Data Source =.\\sqlexpress; Initial Catalog = 720server; Integrated Security = True";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql = "SELECT * FROM participantes";
+                    String sql = "SELECT * FROM dbo.participantes";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                InfoParticipantes participantes = new InfoParticipantes();
-                                participantes.dorsal = "000" + reader.GetInt32(0);
-                                participantes.nombre = reader.GetString(1);
-                                participantes.apellidos = reader.GetString(2);
-                                participantes.correo = reader.GetString(3);
-                                participantes.telefono = reader.GetString(4);
-                                participantes.altura = reader.GetString(5);
-                                participantes.peso = reader.GetString(6);
-                                participantes.fecha = reader.GetString(7);
+                                InfoParticipantes participantesInfo = new InfoParticipantes();
+                                participantesInfo.dorsal = "000" + reader.GetInt32(0);
+                                participantesInfo.nombre = reader.GetString(1);
+                                participantesInfo.apellidos = reader.GetString(2);
+                                participantesInfo.correo = reader.GetString(3);
+                                participantesInfo.telefono = "" + reader.GetInt32(4);
+                                participantesInfo.altura = "" + reader.GetInt32(5);
+                                participantesInfo.peso = "" + reader.GetInt32(6);
+                                participantesInfo.fecha = "" + reader.GetInt32(7);
 
-                                listaParticipantes.Add(participantes);
+                                listaParticipantes.Add(participantesInfo);
                             }
                         }
                     }
                 }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine("Exception: " + ex.ToString());
-            }
+           
         }
     }
 
