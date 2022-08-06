@@ -21,13 +21,13 @@
         @foreach(var item in Model.listaParticipantes)
         {
             <tr>
-                <td>@item.dorsal</td>
+                <td>@item.id</td>
                 <td>@item.apellidos, @item.nombre</td>
-                <td>@item.correo</td>
+                <td>@item.email</td>
                 <td>@item.telefono</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/Participantes/Edit?@item.dorsal=">Editar</a>
-                    <a class="btn btn-danger btn-sm" href="/Participantes/Delete?@item.dorsal=">Eliminar</a>
+                    <a class="btn btn-primary btn-sm" href="/Participantes/Editar?id=@item.id">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="/Participantes/Delete?@item.id">Eliminar</a>
                 </td>
             </tr>
         }

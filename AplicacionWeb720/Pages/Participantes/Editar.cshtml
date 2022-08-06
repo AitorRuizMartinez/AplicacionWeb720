@@ -1,10 +1,10 @@
 ﻿@page
-@model AplicacionWeb720.Pages.Participantes.CrearModel
+@model AplicacionWeb720.Pages.Participantes.EditarModel
 @{
 }
 
 <br>
-<h2>Nuevo Participante</h2>
+<h2>Editar Participante</h2>
 <br />
 
 <!-- Mensaje de error -->
@@ -22,46 +22,47 @@
 <!-- Formulario para nuevos participantes -->
 
 <form method="post">
+    <input type="hidden" name="id" value="@Model.Participantes.id" />
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Nombre</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="nombre" value="@Model.infoParticipantes.nombre" />
+            <input type="text" class="form-control" name="nombre" value="@Model.Participantes.nombre" />
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Apellidos</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="apellidos" value="@Model.infoParticipantes.apellidos" />
+            <input type="text" class="form-control" name="apellidos" value="@Model.Participantes.apellidos" />
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Correo Electrónico</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" name="email" value="@Model.infoParticipantes.email" />
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="email" value="@Model.Participantes.email" />
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Teléfono</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="telefono" value="@Model.infoParticipantes.telefono" />
+            <input type="text" class="form-control" name="telefono" value="@Model.Participantes.telefono" />
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Año de nacimiento</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="fecha" value="@Model.infoParticipantes.fecha" />
+            <input type="text" class="form-control" name="fecha" value="@Model.Participantes.fecha" />
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Peso en kg</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="peso" value="@Model.infoParticipantes.peso" />
+            <input type="text" class="form-control" name="peso" value="@Model.Participantes.peso" />
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Altura en cm</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="altura" value="@Model.infoParticipantes.altura" />
+            <input type="text" class="form-control" name="altura" value="@Model.Participantes.altura" />
         </div>
     </div>
 
@@ -86,3 +87,4 @@
         </div>
     </div>
 </form>
+

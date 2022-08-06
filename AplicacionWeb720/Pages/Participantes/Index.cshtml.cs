@@ -15,7 +15,7 @@ namespace AplicacionWeb720.Pages.Participantes
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql = "SELECT * FROM dbo.participantes";
+                    String sql = "SELECT * FROM participantes";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -23,14 +23,14 @@ namespace AplicacionWeb720.Pages.Participantes
                             while (reader.Read())
                             {
                                 InfoParticipantes participantesInfo = new InfoParticipantes();
-                                participantesInfo.dorsal = "000" + reader.GetInt32(0);
+                                participantesInfo.id = "" + reader.GetInt32(0);
                                 participantesInfo.nombre = reader.GetString(1);
                                 participantesInfo.apellidos = reader.GetString(2);
-                                participantesInfo.correo = reader.GetString(3);
+                                participantesInfo.email = reader.GetString(3);
                                 participantesInfo.telefono = "" + reader.GetInt32(4);
                                 participantesInfo.altura = "" + reader.GetInt32(5);
                                 participantesInfo.peso = "" + reader.GetInt32(6);
-                                participantesInfo.fecha = "" + reader.GetInt32(7);
+                                participantesInfo.fecha = reader.GetInt32(7);
 
                                 listaParticipantes.Add(participantesInfo);
                             }
@@ -43,12 +43,12 @@ namespace AplicacionWeb720.Pages.Participantes
 
     public class InfoParticipantes
     {
-        public String dorsal;
+        public String id;
         public String nombre;
         public String apellidos;
-        public String correo;
+        public String email;
         public String telefono;
-        public String fecha;
+        public int fecha;
         public String peso;
         public String altura;
     }
