@@ -31,10 +31,15 @@ namespace AplicacionWeb720.Pages.Participantes
                                 participantesInfo.altura = "" + reader.GetInt32(5);
                                 participantesInfo.peso = "" + reader.GetInt32(6);
                                 participantesInfo.fecha = reader.GetInt32(7);
+                                
 
-                                listaParticipantes.Add(participantesInfo);
+                            listaParticipantes.Add(participantesInfo);
+
+                            // Hacer que el dorsal empiece en 1000 y no en 0.
+
+                            participantesInfo.dorsal = int.Parse(participantesInfo.id) + 1000;
                             }
-                        }
+                        }                       
                     }
                 }
            
@@ -43,6 +48,8 @@ namespace AplicacionWeb720.Pages.Participantes
 
     public class InfoParticipantes
     {
+        
+        public int dorsal;
         public String id;
         public String nombre;
         public String apellidos;

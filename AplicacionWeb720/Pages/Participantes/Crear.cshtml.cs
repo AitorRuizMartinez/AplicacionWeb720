@@ -9,6 +9,9 @@ namespace AplicacionWeb720.Pages.Participantes
         public InfoParticipantes infoParticipantes = new InfoParticipantes();
         public String campovacio = "";
         public String correcto = "";
+        public double imc;
+        public int edad;
+        
         public void OnGet()
         {
         }
@@ -23,19 +26,40 @@ namespace AplicacionWeb720.Pages.Participantes
             infoParticipantes.peso = Request.Form["peso"];
             infoParticipantes.fecha = int.Parse(Request.Form["fecha"]);
 
+            double altura = double.Parse(infoParticipantes.altura) / 100;
+            imc = int.Parse(infoParticipantes.peso) / (Math.Pow(altura,2));
+
+            edad = 2022 - infoParticipantes.fecha;
+            
+            // CONDICIONAL PARA RECHAZAR PARTICIPANTES
+
             if (infoParticipantes.nombre.Length == 0 || infoParticipantes.apellidos.Length == 0 || 
                 infoParticipantes.peso.Length == 0 || infoParticipantes.altura.Length == 0 || 
                 infoParticipantes.email.Length == 0 || infoParticipantes.telefono.Length == 0)
+
+            
             {
                 campovacio = "Rellena todos los campos para continuar.";
                 return;
             }
 
+            else if (imc<18.0 || imc>34.0)
+            {
+                campovacio = "El imc no está admitido.";
+                return;
+            }
+            
+            else if ( edad > 60)
+
+            {
+                campovacio = "Eres demasiado mayor para participar";
+                return;
+            }
             // Guardar el nuevo participante en la base de datos.
 
             try
             {
-                String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=720server;Integrated Security=True";
+                String connectionString = "Data Source =.\\sqlexpress; Initial Catalog = 720server; Integrated Security = True";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
