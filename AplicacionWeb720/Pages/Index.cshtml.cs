@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AplicacionWeb720.Pages
+
+    
 {
     public class IndexModel : PageModel
     {
@@ -17,4 +19,6 @@ namespace AplicacionWeb720.Pages
 
         }
     }
+
+    
 }

@@ -7,6 +7,7 @@
 <h2>Participantes</h2>
 <a class='btn btn-primary btn-sm' href='/Participantes/Crear'>Nuevo Participante</a>
 
+<!-- Tabla de participantes -->
 <table class="table">
     <thead>
         <tr>
@@ -18,6 +19,7 @@
         </tr>
     </thead>
     <tbody>
+        <!-- Bucle para mostrar los datos de cada nuevo participante -->
         @foreach(var item in Model.listaParticipantes)
         {
             <tr>

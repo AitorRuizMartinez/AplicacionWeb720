@@ -28,9 +28,11 @@ namespace AplicacionWeb720.Pages.Participantes
                                 participantesInfo.apellidos = reader.GetString(2);
                                 participantesInfo.email = reader.GetString(3);
                                 participantesInfo.telefono = "" + reader.GetInt32(4);
-                                participantesInfo.altura = "" + reader.GetInt32(5);
+                                participantesInfo.fecha = reader.GetInt32(5);
                                 participantesInfo.peso = "" + reader.GetInt32(6);
-                                participantesInfo.fecha = reader.GetInt32(7);
+                                participantesInfo.altura = "" + reader.GetInt32(7);
+                                
+                                
                                 
 
                             listaParticipantes.Add(participantesInfo);

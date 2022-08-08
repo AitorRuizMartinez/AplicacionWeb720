@@ -2,7 +2,7 @@
 @using System.Data.SqlClient;
 
 
-
+<!-- Bloque try para eliminar un participante -->
 @{
     try
             {
@@ -27,4 +27,8 @@
             {
               
             }
+
+         // Redirigir a la tabla si se elimina un participante
+
+            Response.Redirect("/Participantes/Index");
 }

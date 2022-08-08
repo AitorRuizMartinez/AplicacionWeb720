@@ -22,9 +22,10 @@ namespace AplicacionWeb720.Pages.Participantes
             infoParticipantes.apellidos = Request.Form["apellidos"];
             infoParticipantes.email = Request.Form["email"];
             infoParticipantes.telefono = Request.Form["telefono"];
-            infoParticipantes.altura = Request.Form["altura"];
+            infoParticipantes.fecha = int.Parse(Request.Form["fecha"]);         
             infoParticipantes.peso = Request.Form["peso"];
-            infoParticipantes.fecha = int.Parse(Request.Form["fecha"]);
+            infoParticipantes.altura = Request.Form["altura"];
+
 
             double altura = double.Parse(infoParticipantes.altura) / 100;
             imc = int.Parse(infoParticipantes.peso) / (Math.Pow(altura,2));
@@ -64,8 +65,8 @@ namespace AplicacionWeb720.Pages.Participantes
                 {
                     connection.Open();
                     String sql = "INSERT INTO participantes " +
-                        "(nombre, apellidos, email, telefono, fecha, altura, peso) VALUES " +
-                        "(@nombre, @apellidos, @email, @telefono, @fecha, @altura, @peso);";
+                        "(nombre, apellidos, email, telefono, fecha, peso, altura) VALUES " +
+                        "(@nombre, @apellidos, @email, @telefono, @fecha, @peso, @altura);";
                     
                     using (SqlCommand command = new SqlCommand(sql, connection)){
                         command.Parameters.AddWithValue("@nombre", infoParticipantes.nombre);
@@ -73,8 +74,9 @@ namespace AplicacionWeb720.Pages.Participantes
                         command.Parameters.AddWithValue("@email", infoParticipantes.email);
                         command.Parameters.AddWithValue("@telefono", infoParticipantes.telefono);
                         command.Parameters.AddWithValue("@fecha", infoParticipantes.fecha);
-                        command.Parameters.AddWithValue("@altura", infoParticipantes.altura);
                         command.Parameters.AddWithValue("@peso", infoParticipantes.peso);
+                        command.Parameters.AddWithValue("@altura", infoParticipantes.altura);
+                        
 
                         command.ExecuteNonQuery();
                     }
